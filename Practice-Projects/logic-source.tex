@@ -1,0 +1,323 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\title{\textbf{Úvod do výrokovej logiky}\\ \large (Propositional logic)}
+\author{Denis Schiffel}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[top=20mm, bottom=25mm, left=20mm, right=20mm]{geometry}
+\usepackage{titling}
+\date{}
+\begin{document}
+\maketitle
+\section{Význam logiky}
+
+Mnoho ľudí má pri spomenutí slova ,,matematika“ hneď pred očami komplikované vzorce, tabuľky a čísla, ktoré sa v bežnom živote zdajú byť zbytočné. Logika je však iná – je to vlastne náš najstarší a najprirodzenejší spoločník. Používame ju úplne každý deň, často bez toho, aby sme si to vôbec uvedomili. Keď sa napríklad rozhodujeme, či si vziať dáždnik, alebo či nám v obchode správne vydali výdavok, používame presne tie isté pravidlá.
+
+Celým zmyslom logiky je pomôcť nám usporiadať naše myšlienky a presne popísať vzťahy medzi rôznymi tvrdeniami a situáciami. Jej úplne najhlavnejšou úlohou je pomôcť nám rozhodnúť o akejkoľvek veci 
+
+to najdôležitejšie: či je to \underline{\textbf{pravda}}, alebo \underline{\textbf{nepravda}}.
+\subsection{Výrok (propozícia)}
+Keď v matematike hovoríme \textbf{výrok (propozícia)}, máme na mysli v podstate akékoľvek tvrdenie o svete, o ktorom má zmysel povedať, či je \textbf{pravdivé}, alebo \textbf{nepravdivé}.
+
+Napríklad: keď poviem „reštaurácia je otvorená“, hneď je nám jasné, že to buď naozaj platí (je to pravda), alebo neplatí (je to nepravda). Naopak, veta ako „Dajte si polievku!“ (rozkaz) alebo „Koľko je hodín?“ (otázka) nie sú výroky, pretože sa o nich nedá povedať, že sú pravdivé alebo nepravdivé. Výrok je skrátka jednoduchá oznamovacia veta, na ktorú vieme s istotou nalepiť nálepku „je to pravda“ alebo „nie je to pravda“.\bigskip \bigskip
+
+Aby sme nemuseli za každým manuálne vypisovať znenie výroku, matematici preto zaviedli takýto spôsob: 
+\begin{center}
+\vspace{5mm}
+$\begin{aligned}
+p &= \text{reštaurácia je otvorená} \\
+q &= \text{dám si polievku} \\
+r &= \text{dám si hlavné jedlo} \\
+x &= \text{párne číslo}
+\end{aligned}$
+\end{center} 
+\bigskip \bigskip \hspace{5mm} vďaka tomu môžeme nahradiť pôvodný výrok napríklad jedným malým písmenom.
+\vspace{5mm}
+\subsection{Pravdivostná hodnota a negácia}
+Ako sme si pred chvíľou povedali, o výrokoch vieme rozhodnúť, či sú pravdivé alebo nepravdivé. Pravdu budeme označovať číslom \textbf{1} a nepravdu číslom \textbf{0}, túto vlastnosť nazývame \textbf{pravdivostná hodnota}.
+
+Aby sme mohli vyjadriť výroky, ktoré obsahujú „nie“/„ne-“, alebo ak chceme vyjadriť presný opak nejakého tvrdenia, zavádzame operáciu, ktorú nazývame \textbf{negácia}. 
+
+Negácia nerobí nič iné, než že \textbf{obracia pravdivostnú hodnotu na jej presný opak}. To pre nás znamená, že ak je nejaký výrok pravdivý (má hodnotu \textbf{1}), jeho negácia ho preklopí na nepravdivý (hodnota \textbf{0}), t.\,j. opak pravdy je nepravda. A naopak, ak bolo niečo nepravdivé (\textbf{0}), negácia z toho urobí pravdu, t.\,j. opak nepravdy je pravda (\textbf{1}). 
+
+V bežnej reči to vyjadrujeme veľmi prirodzene – obyčajným slovkom „nie“ alebo predponou „ne-“. Ak máme napríklad výrok $p$ („reštaurácia je otvorená“), jeho negácia znamená pravý opak: „reštaurácia \underline{\textbf{nie je}} otvorená“.
+\newpage
+Negáciu výroku ,,$p$'' čítame ako ,,nie $p$'' a značíme ,,$\neg p$''.
+Vďaka práve zavedeným znakom a pravidlám vieme zapísať nasledovné:
+\begin{center}
+\vspace{5mm}
+$\begin{aligned}
+p &= \text{reštaurácia} \textbf{ je } \text{otvorená} \\
+\neg p &= \text{reštaurácia} \textbf{ nie je } \text{otvorená} \\
+q &= \textbf{dám} \text{ si polievku} \\
+\neg q &= \textbf{nedám} \text{ si polievku}
+\end{aligned}$
+\end{center}
+\subsection{Pravdivostná tabuľka}
+Pravdivostná tabuľka je obyčajná tabuľka, pomocou ktorej vieme graficky zapísať pravdivostné hodnoty výrokov tak, aby sme uviedli všetky kombinácie pravdivostných hodnôt, ktoré môžu nastať. Do prvej bunky každého stĺpca píšeme výrok alebo zložený výrok, ktorého pravdivostnú hodnotu skúmame; o zložených výrokoch si povieme neskôr.
+\begin{center}
+\vspace{5mm}
+$\begin{aligned}
+\begin{tabular}{|c|c|}
+\hline
+$p$ & $\neg p$ \\
+\hline
+1 & 0 \\
+0 & 1 \\
+\hline
+\end{tabular}%
+\end{aligned}$
+\end{center} 
+\vspace{5mm}
+\subsection{Logické spojky a zložený výrok}
+Na to, aby sme mohli prakticky uvažovať a zapisovať komplexnejšie tvrdenia (napr. \underline{\textbf{Ak}} je reštaurácia otvorená, \underline{\textbf{tak}} si dám hlavné jedlo \underline{\textbf{alebo}} si dám polievku), potrebujeme si vytvoriť systém zapisovania takýchto tvrdení pomocou \textbf{logických spojok}, ktoré sú definované ako matematická operácia. To znamená, že vieme univerzálne povedať pre ľubovoľný zložený výrok presne \textbf{za akých okolností} je pravdivý. \textbf{Všetky} výroky, ktoré sú spojené \textbf{logickou spojkou}, nazývame zložený výrok. 
+\begin{itemize}
+\vspace{5mm}
+    \item Spojku ,,a/a zároveň'' (konjunkcia) budeme značiť ,,$\land$''. Napríklad $p \land q$ (čítame ,,$p$ \textbf{ a zároveň } $q$``)
+    \item Spojku ,,alebo'' (disjunkcia) budeme značiť ,,$\lor$''. Napríklad $p \lor q$ (čítame ,,$p$ \textbf{ alebo } $q$``)
+    \item Spojku ,,ak...potom...'' (implikácia) budeme značiť ,,$\implies$''. Napríklad $p \implies q$ (čítame ,,$\textbf{ ak } p \textbf{ potom } q$``)
+    \item $\land = \text{konjunkcia} \xrightarrow[]{} \text{ ''a/a zároveň'' }$
+    \item $\lor = \text{disjunkcia} \xrightarrow[]{} \text{ ''alebo'' }$
+    \item $\implies = \text{implikácia} \xrightarrow[]{} \text{ ''ak...potom...'' }$
+    \item $(\land, \lor, \implies):$ logické spojky
+    \item $p \xrightarrow[]{}$ výrok 
+    \item $q \xrightarrow[]{}$ výrok
+    \item $(p \land q) \xrightarrow[]{}$ zložený výrok 
+\end{itemize}
+\vspace{5mm}
+Pomôcka: konjunkcia (spojka ,,a'') $\xrightarrow[]{} \text{,,}\land \text{''}$ aj skutočne vyzerá ako veľké ,,A''.
+\newpage
+\vspace{5mm}
+Teraz vieme \underline{definovať} operáciu konjunkcie (,,a'') dvoch výrokov (ktoré spolu tvoria jeden zložený výrok) a ukázať \textbf{za akých okolností} je/nie je pravdivá:
+\vspace{5mm}
+\begin{center}
+\begin{minipage}[c]{0.50\textwidth}
+\vspace{2mm}
+\[
+\begin{aligned}
+a &= \text{výrok 1} \\
+b &= \text{výrok 2} \\
+a \land b &= \underline{\textbf{konjunkcia }}\text{výroku 1 a výroku 2} 
+\end{aligned}
+\]
+\end{minipage}%
+\hspace{0.02\textwidth}%
+\begin{minipage}[c]{0.42\textwidth}
+\centering
+\textbf{Konjunkcia} \\[2mm] % Title above the table with a tiny vertical gap
+\begin{tabular}{|c|c|c|c|}
+\hline
+$a$ & $b$ & $a \land b$ & $\neg(a \land b)$ \\ \hline
+1 & 1 & 1 & 0 \\ \hline
+1 & 0 & 0 & 1 \\ \hline
+0 & 1 & 0 & 1 \\ \hline
+0 & 0 & 0 & 1 \\ \hline
+\end{tabular}
+\end{minipage}
+\end{center}
+\vspace{5mm}
+Môžeme si všimnúť hneď niekoľko zaujímavých vecí:
+\begin{enumerate}
+    \item Konjunkcia (zložený výrok) pozostávajúca z dvoch výrokov je pravdivá \textbf{iba a len} vtedy, ak sú pravdivé obidva výroky, z ktorých sa konjunkcia skladá, t.\,j. zložený výrok $a \land b$ je pravdivý (1) iba vtedy, ak je pravdivé $\textbf{a}$ a zároveň $\textbf{b}$.
+    \item Negácia pôvodného zloženého výroku $(a \land b)$ nám v tabuľke otočila všetky pravdivostné hodnoty na opačné, t.\,j. všetky pravdivostné hodnoty v jednotlivých riadkoch výroku $\neg (a \land b)$ sú \textbf{presne} opačné ako pri výroku $(a \land b)$. 
+\end{enumerate}
+\vspace{10mm}
+Podobne si vieme \underline{definovať} disjunkciu a implikáciu:
+\vspace{5mm}
+\begin{center}
+% Prvý blok (Disjunkcia)
+\begin{minipage}[c]{0.45\textwidth}
+\centering
+\textbf{Disjunkcia} \\[2mm]
+\begin{tabular}{|c|c|c|c|}
+\hline
+$a$ & $b$ & $a \lor b$ & $\neg(a \lor b)$ \\ \hline
+1 & 1 & 1 & 0 \\ \hline
+1 & 0 & 1 & 0 \\ \hline
+0 & 1 & 1 & 0 \\ \hline
+0 & 0 & 0 & 1 \\ \hline
+\end{tabular}
+\end{minipage}%
+\hspace{0.03\textwidth}% Medzera medzi blokmi
+% Druhý blok (Implikácia)
+\begin{minipage}[c]{0.45\textwidth}
+\centering
+\textbf{Implikácia (\ast)} \\[2mm]
+\begin{tabular}{|c|c|c|c|}
+\hline
+$a$ & $b$ & $a \implies b$ & $\neg(a \implies b)$ \\ \hline
+1 & 1 & 1 & 0 \\ \hline
+1 & 0 & 0 & 1 \\ \hline
+0 & 1 & 1 & 0 \\ \hline
+0 & 0 & 1 & 0 \\ \hline
+\end{tabular}
+\end{minipage}
+\end{center}
+\vspace{10mm}
+Jednoducho vieme vypozorovať, že:
+\begin{enumerate}
+    \item Disjunkcia ,,$\lor$'' dvoch výrokov $(a \lor b)$ je \textbf{nepravdivá} iba vtedy:
+    \begin{enumerate}[label=\alph*)]
+        \item keď sú oba výroky \textbf{nepravdivé}, t.\,j. musí platiť, že pravdivostná hodnota ,,$\textbf{a}$'' aj pravdivostná hodnota ,,$\textbf{b}$'' sú obe nepravda (0).  
+    \end{enumerate}
+    \vspace{5mm}
+    \item Implikácia ,,$\implies$'' dvoch výrokov $(a \implies b)$ je \textbf{nepravdivá} iba vtedy:  
+    \begin{enumerate}[label=\alph*)]
+        \item keď z \textbf{pravdy} vyplýva \textbf{nepravda}.
+    \end{enumerate}
+\end{enumerate}
+\newpage
+\subsection{Príklad}
+\vspace{5mm}
+\begin{enumerate}[label=\alph*)]
+    \item {\large $\displaystyle \fcolorbox{red}{white}{$\displaystyle \bigg\{p \implies (q \lor r)\bigg\}$} \implies \fcolorbox{blue}{white}{$\displaystyle \bigg\{[(p \land \neg q) \implies r] \land [(p \lor \neg r) \implies \neg q]\bigg\}$}$}
+\end{enumerate}
+\vspace{15mm}
+Nech:
+\begin{align*}
+p &= \text{pôjdeme cez víkend do hôr} \\
+q &= \text{pôjdeme v sobotu na túru} \\
+r &= \text{zostaneme vnútri a budeme hrať spoločenské hry}
+\end{align*}
+\vspace{5mm}
+Potom:
+\begin{align*}
+\large \fcolorbox{red}{white}{$\displaystyle \bigg\{p \implies (q \lor r)\bigg\}$} \quad \text{označme všetko v ,,\{\}'' ako veľké \textbf{X}}
+\end{align*}
+\vspace{5mm}
+\begin{enumerate}[label=\alph*)]
+    \item \fcolorbox{red}{white}{%
+        \parbox{0.85\textwidth}{%
+            \underline{\textbf{Ak}} pôjdeme cez víkend do hôr, 
+            \underline{\textbf{tak}} pôjdeme v sobotu na túru 
+            \underline{\textbf{alebo}} zostaneme vnútri a budeme hrať spoločenské hry.%
+        }%
+    }
+\end{enumerate}
+\vspace{5mm}
+\begin{center}
+\large % Makes the whole table text larger
+\renewcommand{\arraystretch}{1.1} % Stretches the rows vertically (default is 1.0)
+\setlength{\tabcolsep}{8pt} % Increases horizontal spacing between columns
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$p$ & $q$ & $r$ & $q \lor r$ & $p \implies (q \lor r)$ \\ \hline
+0 & 0 & 0 & 0 & 1 \\ \hline
+0 & 0 & 1 & 1 & 1 \\ \hline
+0 & 1 & 0 & 1 & 1 \\ \hline
+0 & 1 & 1 & 1 & 1 \\ \hline
+1 & 0 & 0 & 0 & 0 \\ \hline
+1 & 0 & 1 & 1 & 1 \\ \hline
+1 & 1 & 0 & 1 & 1 \\ \hline
+1 & 1 & 1 & 1 & 1 \\ \hline
+\end{tabular}
+\end{center}
+\vspace{5mm}
+Z pravdivostnej tabuľky nám vyplýva, že zložený výrok $p \implies (q \lor r)$ je nepravdivý iba ak $p = 1$, $q = 0$, $r = 0$.
+Inými slovami, ak \uv{$p$} je \textbf{pravda (1)} a $(q \lor r)$ je \textbf{nepravda (0)}, znamenalo by to v kontexte pôvodného výroku $p \implies (q \lor r)$, že z \textbf{pravdy (1)} vyplýva \textbf{nepravda (0)} a teda $1 \implies 0$, ako bolo znázornené v pravdivostnej tabuľke$_{(\ast)}$.\bigskip
+
+
+Takže jediný prípad, kedy je zložený výrok $p \implies (q \lor r)$ nepravdivý, je: ,,\underline{\textbf{Ak}} pôjdeme cez víkend do hôr, \underline{\textbf{tak}} \underline{ne}pôjdeme v sobotu na túru ani \underline{ne}ostaneme vnútri a \underline{ne}budeme hrať spoločenské hry.'' 
+\newpage
+\begin{align*}
+\fcolorbox{blue}{white}{$\displaystyle \bigg\{[(p \land \neg q) \implies r] \land [(p \lor \neg r) \implies \neg q]\bigg\}$} \quad \text{označme všetko v ,,\{\}'' ako veľké \textbf{Y}}
+\end{align*}
+\vspace{5mm}
+\begin{enumerate}[label=\alph*)]
+    \setcounter{enumi}{1} % Continues as item b)
+    \item \fcolorbox{blue}{white}{%
+        \parbox{0.85\textwidth}{%
+            \underline{\textbf{Ak}} pôjdeme cez víkend do hôr a \underline{ne}pôjdeme v sobotu na túru, 
+            \underline{\textbf{tak}} zostaneme vnútri a budeme hrať spoločenské hry, 
+            \underline{\textbf{a zároveň}} 
+            \underline{\textbf{ak}} pôjdeme cez víkend do hôr alebo \underline{ne}zostaneme vnútri a \underline{ne}budeme hrať spoločenské hry, 
+            \underline{\textbf{tak}} \underline{ne}pôjdeme v sobotu na túru.%
+        }%
+    }
+\end{enumerate}
+\vspace{5mm}
+\begin{center}
+\large % Makes the whole table text larger
+\renewcommand{\arraystretch}{1.1} % Stretches the rows vertically (default is 1.0)
+\setlength{\tabcolsep}{5pt} % Increases horizontal spacing between columns
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+$p$ & $q$ & $r$ & $\neg q$ & $\neg r$ & $(p \land \neg q) \implies r$ & $(p \lor \neg r) \implies \neg q$ & $\{[(p \land \neg q) \implies r] \land [(p \lor \neg r) \implies \neg q]\}$ \\ \hline
+0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\ \hline
+0 & 0 & 1 & 1 & 0 & 1 & 1 & 1 \\ \hline
+0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 \\ \hline
+0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 \\ \hline
+1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 \\ \hline
+1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 \\ \hline
+1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 \\ \hline
+1 & 1 & 1 & 0 & 0 & 1 & 0 & 0 \\ \hline
+\end{tabular}
+\end{center}
+\vspace{5mm}
+Z pravdivostnej tabuľky nám vyplýva, že zložený výrok $Y$ je nepravdivý (0) až v 4 prípadoch:
+\begin{enumerate}[label=\alph*)]
+    \item ak $p = 0$, $q = 1$, $r = 0$
+    \item ak $p = 1$, $q = 0$, $r = 0$
+    \item ak $p = 1$, $q = 1$, $r = 0$
+    \item ak $p = 1$, $q = 1$, $r = 1$
+\end{enumerate}
+\vspace{5mm}
+Inými slovami, keďže výrok $Y$ je konjunkciou dvoch implikácií, na to, aby bol celý výrok $Y$ nepravdivý (0), stačí, aby bola nepravdivá aspoň jedna z týchto implikácií (teda nastal prípad $1 \implies 0$).
+
+\bigskip
+
+Takže príkladom situácie, kedy je celý zložený výrok $Y$ nepravdivý (napr. pre $p=1, q=0, r=0$), je: 
+,,\underline{\textbf{Ak}} pôjdeme cez víkend do hôr a \underline{ne}pôjdeme v sobotu na túru, \underline{\textbf{tak}} \underline{ne}zostaneme vnútri a \underline{ne}budeme hrať spoločenské hry.“
+\newpage
+Ako posledné nám ostáva zistiť pravdivostné hodnoty implikácie celých zložených výrokov, ktoré si označíme veľkým $X$ a veľkým $Y$, takže dostaneme $X \implies Y$.
+\vspace{5mm}
+\[
+\large 
+\overbrace{\displaystyle \bigg\{p \implies (q \lor r)\bigg\}}^{\text{\huge $X$}\rule{0pt}{3.5ex}}
+\quad 
+\fcolorbox{green}{white}{$\implies$} 
+\quad 
+\overbrace{\displaystyle \bigg\{[(p \land \neg q) \implies r] \land [(p \lor \neg r) \implies \neg q]\bigg\}}^{\text{\huge $Y$}\rule{0pt}{3.5ex}}
+\]
+\vspace{10mm}
+\begin{center}
+\large 
+\renewcommand{\arraystretch}{1.2} 
+\setlength{\tabcolsep}{6pt} 
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$p$ & $q$ & $r$ & $X$ & $Y$ & $X \implies Y$ \\ \hline
+0 & 0 & 0 & 1 & 1 & 1 \\ \hline
+0 & 0 & 1 & 1 & 1 & 1 \\ \hline
+0 & 1 & 0 & 1 & 0 & 0 \\ \hline
+0 & 1 & 1 & 1 & 1 & 1 \\ \hline
+1 & 0 & 0 & 0 & 0 & 1 \\ \hline
+1 & 0 & 1 & 1 & 1 & 1 \\ \hline
+1 & 1 & 0 & 1 & 0 & 0 \\ \hline
+1 & 1 & 1 & 1 & 0 & 0 \\ \hline
+\end{tabular}
+\end{center}
+\vspace{5mm}
+Z pravdivostnej tabuľky nám vyplýva, že implikácia $X \implies Y$ je nepravdivá (0) v 3 prípadoch:
+\begin{enumerate}[label=\alph*)]
+    \item ak $p = 0$, $q = 1$, $r = 0$
+    \item ak $p = 1$, $q = 1$, $r = 0$
+    \item ak $p = 1$, $q = 1$, $r = 1$
+\end{enumerate}
+\vspace{5mm}
+Inými slovami, keďže implikácia $X \implies Y$ je nepravdivá (0) iba vtedy, keď je jej predpoklad $X$ pravdivý (1) a dôsledok $Y$ nepravdivý (0), znamenalo by to v kontexte tejto implikácie, že z pravdivého výroku $X$ (1) vyplýva nepravdivý výrok $Y$ (0), a teda ide o prípad $1 \implies 0$.
+
+\bigskip
+
+Takže príkladom situácie, kedy je celá implikácia $X \implies Y$ nepravdivá (napr. pre $p=1, q=1, r=0$), je: 
+,,\underline{\textbf{Ak}} platí, že ak pôjdeme cez víkend do hôr, tak pôjdeme v sobotu na túru alebo zostaneme vnútri a budeme hrať spoločenské hry, \underline{\textbf{tak}} neplatí, že ak pôjdeme cez víkend do hôr a nepôjdeme v sobotu na túru, tak zostaneme vnútri a budeme hrať spoločenské hry, a zároveň ak pôjdeme cez víkend do hôr alebo nezostaneme vnútri, tak nepôjdeme v sobotu na túru.“
+
+\begin{center}Takže sme zistili, že uvedený zložený výrok nie je ani kontradikcia ani tautológia, ale kontingentný výrok.
+\end{center}
+\bigskip
+\hfill $\square$.
+\end{document}
